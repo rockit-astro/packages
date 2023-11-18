@@ -8,8 +8,9 @@ In practice, you shouldn't need to commit to this repository directly.  The scri
 
 Start by installing the epel repository:
 ```
-sudo dnf config-manager --set-enabled crb
-sudo dnf install epel-release epel-next-release
+sudo yum config-manager --set-enabled crb
+sudo yum install epel-release
+sudo yum install epel-next-release
 ````
 
 Finally, create a repository definition file at `/etc/yum.repos.d/rockit.repo`:
