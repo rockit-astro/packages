@@ -33,4 +33,15 @@ Push from ${GITHUB_REPOSITORY}
 Commit: ${GITHUB_SHA}
 END
 
-git push origin master
+for i in $(seq 1 5);
+do
+    git push origin master
+    if [ $? = 0 ] ; then
+        break
+    else
+        # Another job has most likely pushed a commit in the meantime
+        git fetch origin
+        git rebase origin/master
+    fi
+done
+
